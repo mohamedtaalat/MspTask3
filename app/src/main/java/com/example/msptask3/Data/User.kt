@@ -3,7 +3,7 @@ package com.example.msptask3.Data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "User_table")
+@Entity(tableName = "User")
  data class User (
 
      var Name:String,

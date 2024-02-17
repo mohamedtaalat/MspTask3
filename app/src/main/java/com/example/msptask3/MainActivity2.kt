@@ -16,12 +16,15 @@ lateinit var NameEditText2:EditText
 lateinit var PasswordEditText2:EditText
 lateinit var PhoneEditText2:EditText
 
-lateinit var repo2:UserRepo
+
 class MainActivity2 : AppCompatActivity() {
+    val database:UserDatabase by lazy {  UserDatabase.getDatabase(baseContext)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+         var repo:UserRepo = UserRepo(database.dao())
         setContentView(R.layout.activity_main2)
-        //repo2 = UserRepo(database.dao())
 
 
         ButtonSignUp=findViewById(R.id.bt3)

@@ -29,9 +29,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var user:User=User(Name = "mohamed", Password = "12333", PhoneNumber = 123456)
-       repo.adduser(user)
         repo = UserRepo(database.dao())
-
+        repo.adduser(user)
         LoginButton=findViewById(R.id.bt1)
         SignupButton=findViewById(R.id.btt2)
         NameEdittext=findViewById(R.id.ed1)

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class UserRepo(private val dao: Dao) {
 
-    val selectall:LiveData<List<User>> =dao.SelectAll()
+    val selectall:List<User> =dao.SelectAll()
     fun adduser(user: User){
         dao.InsertUser(user)
     }

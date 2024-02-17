@@ -10,8 +10,8 @@ import androidx.room.Query
 interface Dao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun InsertUser(user: User)
-    @Query("Select*from user_table")
-    fun SelectAll():LiveData<List<User>>
-    @Query("Select password from User_table where PhoneNumber = :phonenumber")
+    @Query("Select*from User")
+    fun SelectAll():List<User>
+    @Query("Select password from User where PhoneNumber = :phonenumber")
     fun GetPassword(phonenumber:String):String
 }
