@@ -1,7 +1,6 @@
 package com.example.msptask3
 
-import android.app.Application
-import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -22,9 +21,9 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
          var repo:UserRepo = UserRepo(database.dao())
-        setContentView(R.layout.activity_main2)
+
+        setContentView(R.layout.activity_afterlogin)
 
 
         ButtonSignUp=findViewById(R.id.bt3)
@@ -32,12 +31,22 @@ class MainActivity2 : AppCompatActivity() {
         PasswordEditText2=findViewById(R.id.ed5)
         PhoneEditText2=findViewById(R.id.ed6)
         ButtonSignUp.setOnClickListener{
-//            if (!= NameEditText2.text.toString()){
-//                Toast.makeText(this, "Sucssful", Toast.LENGTH_SHORT).show()
-//            }
-//            else{
-//                Toast.makeText(this, "incorrect", Toast.LENGTH_SHORT).show()
-//            }
+            if(repo.GetPhoneNumber(PhoneEditText2.text.toString().toInt())!= PhoneEditText2.text.toString().toInt()){
+
+                Toast.makeText(this, "Sucssful", Toast.LENGTH_SHORT).show()
+                val myintent2= Intent(this,AfterLogIn::class.java)
+                startActivity(myintent2)
+                var user:User= User(NameEditText2.text.toString(), PasswordEditText2.text.toString(),
+                    PhoneEditText2.text.toString().toInt())
+                repo.adduser(user)
+            }
+            else {
+                Toast.makeText(this, "incorrect", Toast.LENGTH_SHORT).show()
+            }
+
+
+
+
         }
 
 

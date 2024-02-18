@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-@Database(entities = [User::class], version = 5, exportSchema = false)
+@Database(entities = [User::class], version = 7, exportSchema = false)
 abstract class UserDatabase:RoomDatabase() {
     abstract fun dao():Dao
     companion object{
@@ -16,7 +16,7 @@ abstract class UserDatabase:RoomDatabase() {
                     context.applicationContext,
                     UserDatabase::class.java,
                    " User"
-                ).allowMainThreadQueries()
+                ).allowMainThreadQueries().fallbackToDestructiveMigration()
                 .build()
                 INSTANCE=instance
                 return instance
